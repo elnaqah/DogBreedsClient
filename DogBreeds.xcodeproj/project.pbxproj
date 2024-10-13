@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C9536A5A2CBC719F007A38DF /* DogBreedsClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreedsClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9536A6C2CBC71A1007A38DF /* DogBreedsClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogBreedsClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9536A762CBC71A1007A38DF /* DogBreedsClientUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogBreedsClientUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9536A5A2CBC719F007A38DF /* DogBreeds.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DogBreeds.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9536A6C2CBC71A1007A38DF /* DogBreedsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogBreedsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9536A762CBC71A1007A38DF /* DogBreedsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DogBreedsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -85,9 +85,9 @@
 		C9536A5B2CBC719F007A38DF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C9536A5A2CBC719F007A38DF /* DogBreedsClient.app */,
-				C9536A6C2CBC71A1007A38DF /* DogBreedsClientTests.xctest */,
-				C9536A762CBC71A1007A38DF /* DogBreedsClientUITests.xctest */,
+				C9536A5A2CBC719F007A38DF /* DogBreeds.app */,
+				C9536A6C2CBC71A1007A38DF /* DogBreedsTests.xctest */,
+				C9536A762CBC71A1007A38DF /* DogBreedsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,9 +95,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C9536A592CBC719F007A38DF /* DogBreedsClient */ = {
+		C9536A592CBC719F007A38DF /* DogBreeds */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9536A802CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClient" */;
+			buildConfigurationList = C9536A802CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreeds" */;
 			buildPhases = (
 				C9536A562CBC719F007A38DF /* Sources */,
 				C9536A572CBC719F007A38DF /* Frameworks */,
@@ -110,16 +110,16 @@
 			fileSystemSynchronizedGroups = (
 				C9536A5C2CBC719F007A38DF /* DogBreedsClient */,
 			);
-			name = DogBreedsClient;
+			name = DogBreeds;
 			packageProductDependencies = (
 			);
 			productName = DogBreedsClient;
-			productReference = C9536A5A2CBC719F007A38DF /* DogBreedsClient.app */;
+			productReference = C9536A5A2CBC719F007A38DF /* DogBreeds.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C9536A6B2CBC71A1007A38DF /* DogBreedsClientTests */ = {
+		C9536A6B2CBC71A1007A38DF /* DogBreedsTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9536A832CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClientTests" */;
+			buildConfigurationList = C9536A832CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsTests" */;
 			buildPhases = (
 				C9536A682CBC71A1007A38DF /* Sources */,
 				C9536A692CBC71A1007A38DF /* Frameworks */,
@@ -133,16 +133,16 @@
 			fileSystemSynchronizedGroups = (
 				C9536A6F2CBC71A1007A38DF /* DogBreedsClientTests */,
 			);
-			name = DogBreedsClientTests;
+			name = DogBreedsTests;
 			packageProductDependencies = (
 			);
 			productName = DogBreedsClientTests;
-			productReference = C9536A6C2CBC71A1007A38DF /* DogBreedsClientTests.xctest */;
+			productReference = C9536A6C2CBC71A1007A38DF /* DogBreedsTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		C9536A752CBC71A1007A38DF /* DogBreedsClientUITests */ = {
+		C9536A752CBC71A1007A38DF /* DogBreedsUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C9536A862CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClientUITests" */;
+			buildConfigurationList = C9536A862CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsUITests" */;
 			buildPhases = (
 				C9536A722CBC71A1007A38DF /* Sources */,
 				C9536A732CBC71A1007A38DF /* Frameworks */,
@@ -156,11 +156,11 @@
 			fileSystemSynchronizedGroups = (
 				C9536A792CBC71A1007A38DF /* DogBreedsClientUITests */,
 			);
-			name = DogBreedsClientUITests;
+			name = DogBreedsUITests;
 			packageProductDependencies = (
 			);
 			productName = DogBreedsClientUITests;
-			productReference = C9536A762CBC71A1007A38DF /* DogBreedsClientUITests.xctest */;
+			productReference = C9536A762CBC71A1007A38DF /* DogBreedsUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -186,7 +186,7 @@
 					};
 				};
 			};
-			buildConfigurationList = C9536A552CBC719F007A38DF /* Build configuration list for PBXProject "DogBreedsClient" */;
+			buildConfigurationList = C9536A552CBC719F007A38DF /* Build configuration list for PBXProject "DogBreeds" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -200,9 +200,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C9536A592CBC719F007A38DF /* DogBreedsClient */,
-				C9536A6B2CBC71A1007A38DF /* DogBreedsClientTests */,
-				C9536A752CBC71A1007A38DF /* DogBreedsClientUITests */,
+				C9536A592CBC719F007A38DF /* DogBreeds */,
+				C9536A6B2CBC71A1007A38DF /* DogBreedsTests */,
+				C9536A752CBC71A1007A38DF /* DogBreedsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -258,12 +258,12 @@
 /* Begin PBXTargetDependency section */
 		C9536A6E2CBC71A1007A38DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C9536A592CBC719F007A38DF /* DogBreedsClient */;
+			target = C9536A592CBC719F007A38DF /* DogBreeds */;
 			targetProxy = C9536A6D2CBC71A1007A38DF /* PBXContainerItemProxy */;
 		};
 		C9536A782CBC71A1007A38DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = C9536A592CBC719F007A38DF /* DogBreedsClient */;
+			target = C9536A592CBC719F007A38DF /* DogBreeds */;
 			targetProxy = C9536A772CBC71A1007A38DF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -461,7 +461,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedsClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DogBreedsClient";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreeds.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DogBreeds";
 			};
 			name = Debug;
 		};
@@ -480,7 +480,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreedsClient.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DogBreedsClient";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DogBreeds.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DogBreeds";
 			};
 			name = Release;
 		};
@@ -521,7 +521,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C9536A552CBC719F007A38DF /* Build configuration list for PBXProject "DogBreedsClient" */ = {
+		C9536A552CBC719F007A38DF /* Build configuration list for PBXProject "DogBreeds" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9536A7E2CBC71A1007A38DF /* Debug */,
@@ -530,7 +530,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9536A802CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClient" */ = {
+		C9536A802CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreeds" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9536A812CBC71A1007A38DF /* Debug */,
@@ -539,7 +539,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9536A832CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClientTests" */ = {
+		C9536A832CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9536A842CBC71A1007A38DF /* Debug */,
@@ -548,7 +548,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C9536A862CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsClientUITests" */ = {
+		C9536A862CBC71A1007A38DF /* Build configuration list for PBXNativeTarget "DogBreedsUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C9536A872CBC71A1007A38DF /* Debug */,
