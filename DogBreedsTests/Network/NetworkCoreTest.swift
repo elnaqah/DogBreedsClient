@@ -4,12 +4,12 @@ import Foundation
 
 struct NetworkCoreImplTests {
     var networkCore: NetworkCoreImpl!
-    var mockSession: MockSessionWrapper!
+    var mockSession: SessionWrapperMock!
     let validEndpoint = EndpointMock(path: "test")
     let host = "https://example.com"
     
     init() {
-        mockSession = MockSessionWrapper()
+        mockSession = SessionWrapperMock()
         networkCore = NetworkCoreImpl(session: mockSession, host: host)
     }
 

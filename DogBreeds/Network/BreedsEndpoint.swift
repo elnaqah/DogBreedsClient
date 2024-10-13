@@ -1,6 +1,6 @@
 enum BreedsEndpoint: Endpoint {
     case breeds
-    case breed(id: String)
+    case breed(id: Int)
     
     var path: String {
         switch self {

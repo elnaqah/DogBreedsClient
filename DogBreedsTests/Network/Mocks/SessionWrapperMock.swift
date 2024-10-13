@@ -1,7 +1,7 @@
 import Foundation
 @testable import DogBreeds
 
-class MockSessionWrapper: SessionWrapper {
+class SessionWrapperMock: SessionWrapper {
     var mockData: Data?
     var mockError: Error?
     var mockResponse: URLResponse?
