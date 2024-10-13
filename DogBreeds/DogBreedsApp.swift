@@ -2,7 +2,7 @@ import SwiftUI
 import SwiftData
 
 @main
-struct DogBreedsClientApp: App {
+struct DogBreedsApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -18,7 +18,7 @@ struct DogBreedsClientApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
         .modelContainer(sharedModelContainer)
     }
