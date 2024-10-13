@@ -1,13 +1,6 @@
-//
-//  DogBreedsClientUITestsLaunchTests.swift
-//  DogBreedsClientUITests
-//
-//  Created by Ahmed alnaqah on 2024-10-13.
-//
-
 import XCTest
 
-final class DogBreedsClientUITestsLaunchTests: XCTestCase {
+final class DogBreedsUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

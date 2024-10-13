@@ -1,6 +1,7 @@
 import Testing
-@testable import DogBreedsClient
+@testable import DogBreeds
 
+@Suite
 struct BreedsNetworkClientTests {
     
     private let client = DogBreedNetworkClient()

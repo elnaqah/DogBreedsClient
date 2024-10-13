@@ -1,13 +1,6 @@
-//
-//  DogBreedsClientUITests.swift
-//  DogBreedsClientUITests
-//
-//  Created by Ahmed alnaqah on 2024-10-13.
-//
-
 import XCTest
 
-final class DogBreedsClientUITests: XCTestCase {
+final class DogBreedsUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
