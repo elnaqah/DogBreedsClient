@@ -4,10 +4,12 @@ enum NetworkError: Error {
     case invalidURL
     case invalidResponse
     case requestFailed(code: Int)
+    case serverError
+    case decodeError
 }
 
 protocol NetworkCore {
-    func get(endpoint: Endpoint) async throws -> Data
+    func get(endpoint: Endpoint) async throws(NetworkError) -> Data
 }
 
 struct NetworkCoreImpl: NetworkCore {
@@ -22,23 +24,25 @@ struct NetworkCoreImpl: NetworkCore {
         self.host = host
     }
     
-    func get(endpoint: Endpoint) async throws -> Data {
+    func get(endpoint: Endpoint) async throws(NetworkError) -> Data {
         guard let url = URL(string: "\(host)/\(endpoint.path)") else {
             throw NetworkError.invalidURL
         }
         
         let request = URLRequest(url: url)
-        
-        let (data, response) = try await session.data(for: request)
-        
-        guard let response = response as? HTTPURLResponse else {
-            throw NetworkError.invalidResponse
-        }
+        do {
+            let (data, response) = try await session.data(for: request)
+            guard let response = response as? HTTPURLResponse else {
+                throw NetworkError.invalidResponse
+            }
+                
+            guard response.statusCode == 200 else {
+                throw NetworkError.requestFailed(code: response.statusCode)
+            }
             
-        guard response.statusCode == 200 else {
-            throw NetworkError.requestFailed(code: response.statusCode)
+            return data
+        } catch {
+            throw NetworkError.serverError
         }
-        
-        return data
     }
 }

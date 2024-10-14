@@ -7,21 +7,27 @@ struct DogBreedNetworkClient: NetworkClient {
         self.networkCore = networkCore
     }
     
-    func fetchList() async throws -> [DogBreed] {
+    func fetchList() async throws(NetworkError) -> [DogBreed] {
         let data = try await networkCore.get(endpoint: BreedsEndpoint.breeds)
         
         let decoder = JSONDecoder()
-        let breeds = try decoder.decode([DogBreed].self, from: data)
-        
-        return breeds
+        do {
+            let breeds = try decoder.decode([DogBreed].self, from: data)
+            return breeds
+        } catch {
+            throw .decodeError
+        }
     }
     
-    func fetch(by id: Int) async throws -> DogBreed {
+    func fetch(by id: Int) async throws(NetworkError) -> DogBreed {
         let data = try await networkCore.get(endpoint: BreedsEndpoint.breeds)
         
         let decoder = JSONDecoder()
-        let dogBread = try decoder.decode(DogBreed.self, from: data)
-        
-        return dogBread
+        do {
+            let dogBread = try decoder.decode(DogBreed.self, from: data)
+            return dogBread
+        } catch {
+            throw .decodeError
+        }
     }
 }

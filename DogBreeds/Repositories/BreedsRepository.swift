@@ -1,42 +1,56 @@
 protocol BreedsRepository {
-    func getBreeds() async throws -> [DogBreed]
-    func getBreed(id: Int) async throws -> DogBreed
+    func getBreeds() async throws(BreedsRepositoryError) -> [DogBreed]
+    func getBreed(id: Int) async throws(BreedsRepositoryError) -> DogBreed
 }
 
 enum BreedsRepositoryError: Error {
-    case networkError
-    case configurationError
-    case dataPersistenceError
+    case network
+    case dataPersistence
+    case unknown
 }
 
 struct BreedsRepositoryImpl: BreedsRepository {
     private let client: any NetworkClient<DogBreed>
+    private let localRepository: LocalWriteRepository
     
-    init(client: any NetworkClient<DogBreed>) {
+    init(
+        client: any NetworkClient<DogBreed>,
+        localRepository: LocalWriteRepository
+    ) {
         self.client = client
+        self.localRepository = localRepository
     }
     
-    func getBreeds() async throws -> [DogBreed] {
+    func getBreeds() async throws(BreedsRepositoryError) -> [DogBreed] {
         do {
             let breeds = try await client.fetchList()
-            // TODO: store data
+            try await updateBreeds(breeds: breeds)
             return breeds
-        } catch NetworkError.requestFailed(code: _) {
-            throw BreedsRepositoryError.networkError
+        } catch is NetworkError {
+            throw BreedsRepositoryError.network
+        } catch is LocalRepository {
+            throw BreedsRepositoryError.dataPersistence
         } catch {
-            throw error
+            throw BreedsRepositoryError.unknown
         }
     }
     
-    func getBreed(id: Int) async throws -> DogBreed {
+    func getBreed(id: Int) async throws(BreedsRepositoryError) -> DogBreed {
         do {
             let breed = try await client.fetch(by: id)
-            // TODO: store data
+            try await localRepository.update(breed: breed)
             return breed
-        } catch NetworkError.requestFailed(code: _) {
-            throw BreedsRepositoryError.networkError
+        } catch is NetworkError {
+            throw BreedsRepositoryError.network
+        } catch is LocalRepositoryError {
+            throw BreedsRepositoryError.dataPersistence
         } catch {
-            throw error
+            throw BreedsRepositoryError.unknown
         }
+    }
+    
+    private func updateBreeds(breeds: [DogBreed]) async throws {
+        try await localRepository.deleteAll()
+        try await localRepository.insert(breeds: breeds)
     }
 }
