@@ -7,36 +7,74 @@ struct DetailsView: View {
     }
     
     var body: some View {
-        if let breed {
-            VStack(alignment: .leading, spacing: 20) {
-                Text(breed.name)
-                    .font(.largeTitle)
-                    .bold()
-                
-                Text("Size: \(breed.size)")
-                    .font(.title2)
-                
-                if let lifeExpectancy = breed.lifeExpectancy {
-                    Text("Life Expectancy: \(lifeExpectancy)")
+        Group {
+            if let breed {
+                ScrollView {
+                    VStack(alignment: .leading, spacing: 20) {
+                        Text(breed.name)
+                            .font(.largeTitle)
+                            .bold()
+                            .padding(.bottom, 10)
+                        
+                        VStack(alignment: .leading, spacing: 12) {
+                            DetailRow(title: "Size", value: breed.size)
+                            
+                            if let lifeExpectancy = breed.lifeExpectancy {
+                                DetailRow(title: "Life Expectancy", value: lifeExpectancy)
+                            }
+                            
+                            if let temperament = breed.temperament {
+                                DetailRow(title: "Temperament", value: temperament)
+                            }
+                            
+                            if let origin = breed.origin {
+                                DetailRow(title: "Origin", value: origin)
+                            }
+                            
+                            if let activityLevel = breed.activityLevel {
+                                DetailRow(title: "Activity Level", value: activityLevel)
+                            }
+                        }
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(UIColor.secondarySystemBackground))
+                        )
+                        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 3)
+                        
+                        Spacer()
+                    }
+                    .padding()
                 }
-                
-                if let temperament = breed.temperament {
-                    Text("Temperament: \(temperament)")
+            } else {
+                VStack {
+                    ProgressView()
+                    Text("Loading breed details...")
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                        .padding(.top, 8)
                 }
-                
-                if let origin = breed.origin {
-                    Text("Origin: \(origin)")
-                }
-                
-                if let activityLevel = breed.activityLevel {
-                    Text("Activity Level: \(activityLevel)")
-                }
-                
-                Spacer()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .padding()
-        } else {
-            ProgressView()
+        }
+        .navigationTitle("Breed Details")
+        .task {
+            viewModel.getBreedDetails()
+        }
+    }
+}
+
+struct DetailRow: View {
+    let title: String
+    let value: String
+    
+    var body: some View {
+        HStack(alignment: .top) {
+            Text("\(title):")
+                .fontWeight(.semibold)
+            Text(value)
+                .foregroundColor(.secondary)
+            Spacer()
         }
     }
 }

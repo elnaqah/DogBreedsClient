@@ -10,11 +10,11 @@ enum BreedsRepositoryError: Error {
 }
 
 struct BreedsRepositoryImpl: BreedsRepository {
-    private let client: any NetworkClient<DogBreed>
+    private let client: NetworkClient
     private let localRepository: LocalWriteRepository
     
     init(
-        client: any NetworkClient<DogBreed>,
+        client: NetworkClient,
         localRepository: LocalWriteRepository
     ) {
         self.client = client

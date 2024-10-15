@@ -18,7 +18,7 @@ struct DogBreedsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
+            CompositionRoot().rootView
         }
         .modelContainer(sharedModelContainer)
     }

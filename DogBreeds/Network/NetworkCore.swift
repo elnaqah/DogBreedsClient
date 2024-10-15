@@ -18,7 +18,7 @@ struct NetworkCoreImpl: NetworkCore {
     
     init(
         session: SessionWrapper,
-        host: String
+        host: String = ""
     ) {
         self.session = session
         self.host = host

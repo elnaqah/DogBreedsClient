@@ -1,5 +1,4 @@
-protocol NetworkClient<Model> {
-    associatedtype Model: Decodable
-    func fetchList() async throws(NetworkError) -> [Model]
-    func fetch(by id: Int) async throws(NetworkError) -> Model
+protocol NetworkClient {
+    func fetchList() async throws(NetworkError) -> [DogBreed]
+    func fetch(by id: Int) async throws(NetworkError) -> DogBreed
 }
