@@ -1,7 +1,7 @@
 
 # DogBreedsClient
 
-**DogBreedsClient** is an iOS application built with Swift, designed to display a list of dog breeds and their details by consuming an API. The app uses modular architecture with well-defined layers, including network, UI, and dependency injection, for clear separation of concerns and ease of maintenance.
+**DogBreedsClient** is an iOS application built with Swift, designed to display a list of dog breeds and their details by consuming an API. The app uses a modular architecture with well-defined layers, including network, UI, and dependency injection, for clear separation of concerns and ease of maintenance.
 
 ## Project Structure
 
@@ -74,10 +74,11 @@ Complete Strict concurency are enabled for this project.
 ## Future work
 
 - Increase unit test coverage.
-- Add code generation for the dependency injection, and navigation.
-- Use xcode gen to avoid conflic in the project files.
+- Add code generation for the dependency injection and navigation.
+- Use Xcode gen to avoid conflict in the project files.
 - Separate the shared UI components from the views.
 - Add workflow for verifying builds.
+- Add DocC
 
 ## License
 
