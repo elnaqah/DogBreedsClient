@@ -8,6 +8,9 @@ struct DetailsView: View {
     
     var body: some View {
         Group {
+            if let errorMessage = viewModel.errorMessage {
+                BannerView(message: errorMessage)
+            }
             if let breed {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
@@ -46,7 +49,7 @@ struct DetailsView: View {
                     }
                     .padding()
                 }
-            } else {
+            } else if viewModel.isLoading {
                 VStack {
                     ProgressView()
                     Text("Loading breed details...")
@@ -55,6 +58,11 @@ struct DetailsView: View {
                         .padding(.top, 8)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
+            } else {
+                Text("Details are not available")
+                    .font(.caption)
+                    .foregroundColor(.gray)
+                    .padding(.top, 8)
             }
         }
         .navigationTitle("Breed Details")

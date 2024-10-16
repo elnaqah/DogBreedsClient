@@ -2,6 +2,8 @@ import Foundation
 @MainActor
 final class DetailsViewModel: ObservableObject {
     @Published var breed: DogBreed?
+    @Published var errorMessage: String?
+    @Published var isLoading = false
     let id: Int
     private let breedsRepository: BreedsRepository
     
@@ -14,10 +16,15 @@ final class DetailsViewModel: ObservableObject {
     }
     
     func getBreedDetails() async {
+        errorMessage = nil
+        isLoading = true
+        defer {
+            isLoading = false
+        }
         do {
             breed = try await breedsRepository.getBreed(id: id)
         } catch {
-            //TODO: handle error
+            errorMessage = "Failed to get breed details"
         }
     }
 }

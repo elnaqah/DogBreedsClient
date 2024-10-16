@@ -5,7 +5,10 @@ struct ListView: View {
     
     var body: some View {
         NavigationView {
-            Group {
+            List {
+                if let errorMessage = viewModel.errorMessage {
+                    BannerView(message: errorMessage)
+                }
                 if viewModel.isLoading {
                     ProgressView("Loading breeds...")
                 } else if viewModel.breeds.isEmpty {
@@ -13,7 +16,7 @@ struct ListView: View {
                         .font(.headline)
                         .foregroundColor(.gray)
                 } else {
-                    List(viewModel.breeds, id: \.id) { breed in
+                    ForEach(viewModel.breeds, id: \.id) { breed in
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(breed.name)

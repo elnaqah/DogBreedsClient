@@ -4,6 +4,7 @@ import Foundation
 final class ListViewModel: ObservableObject, Sendable {
     @Published var breeds: [DogBreed]
     @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
     private let navigationDelegate: ListNavigationDelegate
     private let repository: BreedsRepository
     
@@ -18,12 +19,14 @@ final class ListViewModel: ObservableObject, Sendable {
     }
     
     func fetchBreeds() async {
+        errorMessage = nil
         isLoading = true
+        errorMessage = nil
         defer { isLoading = false }
         do {
             breeds = try await repository.getBreeds()
         } catch {
-            // TODO: handle error
+            errorMessage = "Failed to get breed list"
         }
     }
     
