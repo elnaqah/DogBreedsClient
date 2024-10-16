@@ -77,6 +77,7 @@ Complete Strict concurency are enabled for this project.
 - Add code generation for the dependency injection, and navigation.
 - Use xcode gen to avoid conflic in the project files.
 - Separate the shared UI components from the views.
+- Add workflow for verifying builds.
 
 ## License
 
