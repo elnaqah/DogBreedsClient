@@ -22,7 +22,7 @@
 
 ### Key Components
 
-- **Network Layer**: Implements network calls using `URLSession` to fetch data from the DogBreeds API. Handles errors and supports retries for failed requests.
+- **Network Layer**: Implements network calls using `URLSession` to fetch data from the DogBreeds API. Handles errors.
   - `DogBreedNetworkClient`: Manages API requests.
   - `BreedsEndpoint`: Defines endpoints for the dog breeds API.
 
