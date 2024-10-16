@@ -5,9 +5,15 @@ struct ListView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                LazyVStack(alignment: .leading, spacing: 16) {
-                    ForEach(viewModel.breeds, id: \.id) { breed in
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading breeds...")
+                } else if viewModel.breeds.isEmpty {
+                    Text("No breeds available")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                } else {
+                    List(viewModel.breeds, id: \.id) { breed in
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(breed.name)
@@ -21,18 +27,12 @@ struct ListView: View {
                             Image(systemName: "chevron.right")
                                 .foregroundColor(.gray)
                         }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(UIColor.secondarySystemBackground))
-                        )
-                        .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
+                        .contentShape(Rectangle()) // For better tap detection
                         .onTapGesture {
                             viewModel.openDetails(for: breed)
                         }
                     }
                 }
-                .padding()
             }
             .navigationTitle("Dog Breeds")
             .task {

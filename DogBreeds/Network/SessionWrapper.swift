@@ -1,5 +1,5 @@
 import Foundation
-protocol SessionWrapper {
+protocol SessionWrapper: Sendable {
     func data(for request: URLRequest) async throws -> (Data, URLResponse)
 }
 

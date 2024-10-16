@@ -59,12 +59,39 @@ enum ScreenMapperComposer: MainComposer {
 
 enum ListViewModelFactoryComposer: MainComposer {
     static func compose() -> ListViewModelFactory {
-        ListViewModelFactoryImpl(navigation: ListNavigationDelegateComposer.compose())
+        ListViewModelFactoryImpl(
+            navigation: ListNavigationDelegateComposer.compose(),
+            breedsRepository: BreedsRepositoryComposer.compose()
+        )
     }
 }
 
 enum DetailsViewModelFactoryComposer: MainComposer {
     static func compose() -> DetailsViewModelFactory {
-        DetailsViewModelFactoryImpl()
+        DetailsViewModelFactoryImpl(
+            breedsRepository: BreedsRepositoryComposer.compose()
+        )
+    }
+}
+
+enum BreedsRepositoryComposer: Composer {
+    static func compose() -> BreedsRepository {
+        BreedsRepositoryImpl(
+            client: NetworkClientComposer.compose(),
+            localRepository: LocalRepositoryComposer.compose(),
+            connectivity: ConnectivityMonitorComposer.compose()
+        )
+    }
+}
+
+enum LocalRepositoryComposer: Composer {
+    static func compose() -> LocalRepository {
+        LocalRepositoryImpl()
+    }
+}
+
+enum ConnectivityMonitorComposer: Composer {
+    static func compose() -> ConnectivityMonitor {
+        ConnectivityMonitorImpl()
     }
 }

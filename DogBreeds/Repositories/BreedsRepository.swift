@@ -1,4 +1,4 @@
-protocol BreedsRepository {
+protocol BreedsRepository: Sendable {
     func getBreeds() async throws(BreedsRepositoryError) -> [DogBreed]
     func getBreed(id: Int) async throws(BreedsRepositoryError) -> DogBreed
 }
@@ -6,23 +6,30 @@ protocol BreedsRepository {
 enum BreedsRepositoryError: Error {
     case network
     case dataPersistence
+    case cacheNotFound
     case unknown
 }
 
 struct BreedsRepositoryImpl: BreedsRepository {
     private let client: NetworkClient
-    private let localRepository: LocalWriteRepository
+    private let localRepository: LocalRepository
+    private let connectivity: ConnectivityMonitor
     
     init(
         client: NetworkClient,
-        localRepository: LocalWriteRepository
+        localRepository: LocalRepository,
+        connectivity: ConnectivityMonitor
     ) {
         self.client = client
         self.localRepository = localRepository
+        self.connectivity = connectivity
     }
     
     func getBreeds() async throws(BreedsRepositoryError) -> [DogBreed] {
         do {
+            guard await connectivity.isConnected else {
+                return try await localRepository.getAll()
+            }
             let breeds = try await client.fetchList()
             try await updateBreeds(breeds: breeds)
             return breeds
@@ -37,6 +44,9 @@ struct BreedsRepositoryImpl: BreedsRepository {
     
     func getBreed(id: Int) async throws(BreedsRepositoryError) -> DogBreed {
         do {
+            guard await connectivity.isConnected else {
+                return try await getCachedBreed(with: id)
+            }
             let breed = try await client.fetch(by: id)
             try await localRepository.update(breed: breed)
             return breed
@@ -49,8 +59,15 @@ struct BreedsRepositoryImpl: BreedsRepository {
         }
     }
     
+    private func getCachedBreed(with id: Int) async throws -> DogBreed {
+        guard let breed = try await localRepository.get(id: id) else {
+            throw BreedsRepositoryError.cacheNotFound
+        }
+        
+        return breed
+    }
+    
     private func updateBreeds(breeds: [DogBreed]) async throws {
-        try await localRepository.deleteAll()
-        try await localRepository.insert(breeds: breeds)
+        try await localRepository.upsert(breeds: breeds)
     }
 }

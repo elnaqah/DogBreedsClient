@@ -4,7 +4,13 @@ protocol DetailsViewModelFactory {
 }
 
 struct DetailsViewModelFactoryImpl: DetailsViewModelFactory {
+    private let breedsRepository: BreedsRepository
+    
+    init(breedsRepository: BreedsRepository) {
+        self.breedsRepository = breedsRepository
+    }
+    
     func make(with id: Int) -> DetailsViewModel {
-        DetailsViewModel(id: id)
+        DetailsViewModel(id: id, breedsRepository: breedsRepository)
     }
 }

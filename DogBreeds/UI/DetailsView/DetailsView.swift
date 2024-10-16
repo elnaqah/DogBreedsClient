@@ -58,8 +58,8 @@ struct DetailsView: View {
             }
         }
         .navigationTitle("Breed Details")
-        .task {
-            viewModel.getBreedDetails()
+        .task { [viewModel] in
+            await viewModel.getBreedDetails()
         }
     }
 }

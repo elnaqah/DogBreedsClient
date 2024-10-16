@@ -20,7 +20,7 @@ struct DogBreedNetworkClient: NetworkClient {
     }
     
     func fetch(by id: Int) async throws(NetworkError) -> DogBreed {
-        let data = try await networkCore.get(endpoint: BreedsEndpoint.breeds)
+        let data = try await networkCore.get(endpoint: BreedsEndpoint.breed(id: id))
         
         let decoder = JSONDecoder()
         do {

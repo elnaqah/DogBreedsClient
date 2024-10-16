@@ -8,7 +8,7 @@ enum NetworkError: Error {
     case decodeError
 }
 
-protocol NetworkCore {
+protocol NetworkCore: Sendable {
     func get(endpoint: Endpoint) async throws(NetworkError) -> Data
 }
 
@@ -18,7 +18,7 @@ struct NetworkCoreImpl: NetworkCore {
     
     init(
         session: SessionWrapper,
-        host: String = ""
+        host: String = "http://example.elnaqah.com:8080"
     ) {
         self.session = session
         self.host = host

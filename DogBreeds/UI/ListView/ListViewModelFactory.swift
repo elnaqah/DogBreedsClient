@@ -5,10 +5,15 @@ protocol ListViewModelFactory {
 
 struct ListViewModelFactoryImpl: ListViewModelFactory {
     private let navigation: () -> ListNavigationDelegate
-    init(navigation: @escaping  @autoclosure () -> ListNavigationDelegate) {
+    private let breedsRepository: BreedsRepository
+    init(
+        navigation: @escaping  @autoclosure () -> ListNavigationDelegate,
+        breedsRepository: BreedsRepository
+    ) {
         self.navigation = navigation
+        self.breedsRepository = breedsRepository
     }
     func make() -> ListViewModel {
-        ListViewModel(navigationDelegate: navigation())
+        ListViewModel(navigationDelegate: navigation(), repository: breedsRepository)
     }
 }
