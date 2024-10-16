@@ -61,6 +61,9 @@ struct DetailsView: View {
         .task { [viewModel] in
             await viewModel.getBreedDetails()
         }
+        .refreshable {
+            await viewModel.getBreedDetails()
+        }
     }
 }
 

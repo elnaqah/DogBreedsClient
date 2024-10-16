@@ -38,6 +38,9 @@ struct ListView: View {
             .task {
                 await viewModel.fetchBreeds()
             }
+            .refreshable {
+                await viewModel.fetchBreeds()
+            }
         }
     }
 }
